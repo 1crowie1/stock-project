@@ -19,7 +19,7 @@ def main() -> None:
     fmt = f'[%(levelname)s] {log_style.YELLOW}{script_name}{log_style.RESET} %(asctime)s: %(message)s'
     logging.basicConfig(level=level, format=fmt)
 
-    logging.info(f'{log_style.BLUE}{log_style.UNDERLINE}Application Started{log_style.RESET}')
+    logging.info(f'{log_style.UNDERLINE}Application Started{log_style.RESET}')
 
     if not dbapi.check_conn():
         logging.warning(f'{log_style.RED}Database connection failed.{log_style.RESET}')
