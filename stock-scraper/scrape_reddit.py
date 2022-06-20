@@ -1,3 +1,4 @@
+from typing import Dict
 import praw
 import pandas as pd
 
@@ -12,28 +13,61 @@ class Reddit_Scraper:
     def get_authenticated_reddit_client(self) -> praw.Reddit:
         return self.reddit_read_only
 
-def scrape_wsb_sub() -> None:
+def scrape_wsb_sub() -> dict:
     wsb_instance = Reddit_Scraper()
     wsb_client = wsb_instance.get_authenticated_reddit_client()
     wsb_sub = wsb_client.subreddit('wallstreetbets')
-    return
+    print(f"Subreddit: {wsb_sub.display_name}")
 
-def scrape_stockmarket_sub() -> None:
+    wsb_posts = {'Title': [], 'PostText': []}
+
+    posts = wsb_sub.top("month")
+    for post in posts:
+        wsb_posts['Title'].append(post.title)
+        wsb_posts['PostText'].append(post.selftext)
+
+    return wsb_posts
+
+def scrape_stockmarket_sub() -> dict:
     stockmarket_instance = Reddit_Scraper()
     stockmarket_client = stockmarket_instance.get_authenticated_reddit_client()
     stockmarket_sub = stockmarket_client.subreddit('StockMarket')
-    return
+    
+    stockmarket_posts = {'Title': [], 'PostText': []}
 
-def scrape_stocks_sub() -> None:
+    posts = stockmarket_sub.top("month")
+    for post in posts:
+        stockmarket_posts['Title'].append(post.title)
+        stockmarket_posts['PostText'].append(post.selftext)
+
+    return stockmarket_posts
+
+def scrape_stocks_sub() -> dict:
     stocks_instance = Reddit_Scraper()
     stocks_client = stocks_instance.get_authenticated_reddit_client()
     stocks_sub = stocks_client.subreddit('stocks')
-    return
+    
+    stocks_posts = {'Title': [], 'PostText': []}
+
+    posts = stocks_sub.top("month")
+    for post in posts:
+        stocks_posts['Title'].append(post.title)
+        stocks_posts['PostText'].append(post.selftext)
+
+    return stocks_posts
 
 def scrape_subreddits() -> None:
-    scrape_wsb_sub()
-    scrape_stockmarket_sub()
-    scrape_stocks_sub()
+    wsb_data = scrape_wsb_sub()
+    stockmarket_data = scrape_stockmarket_sub()
+    stocks_data = scrape_stocks_sub()
+
+    wsb_output = pd.DataFrame.from_dict(wsb_data, orient='index')
+    stockmarket_output = pd.DataFrame.from_dict(stockmarket_data, orient='index')
+    stocks_output = pd.DataFrame.from_dict(stocks_data, orient='index')
+
+    wsb_output.to_csv('wsb_data.csv')
+    stockmarket_output.to_csv('stockmarket_data.csv')
+    stocks_output.to_csv('stocks_data.csv')
     return
 
 
