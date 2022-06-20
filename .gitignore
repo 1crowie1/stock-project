@@ -67,7 +67,7 @@ instance/
 
 # Scrapy stuff:
 .scrapy
-stock-scraper/reddit_credentials.txt
+stock-scraper/reddit_credentials.csv
 
 # Sphinx documentation
 docs/_build/
