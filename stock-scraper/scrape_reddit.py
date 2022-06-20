@@ -5,7 +5,7 @@ import pandas as pd
 class Reddit_Scraper:
     def __init__(self) -> None:
         var_list = ['client_id', 'client_secret', 'user_agent']
-        self.credentials = pd.read_csv('stock-scraper/reddit_credentials.csv', names=var_list)
+        self.credentials = pd.read_csv('storage/reddit_credentials.csv', names=var_list)
         self.reddit_read_only = praw.Reddit(client_id=f"{self.credentials['client_id'][0]}", 
                                        client_secret=f"{self.credentials['client_secret'][0]}", 
                                        user_agent=f"{self.credentials['user_agent'][0]}")
@@ -65,9 +65,9 @@ def scrape_subreddits() -> None:
     stockmarket_output = pd.DataFrame.from_dict(stockmarket_data, orient='index')
     stocks_output = pd.DataFrame.from_dict(stocks_data, orient='index')
 
-    wsb_output.to_csv('wsb_data.csv')
-    stockmarket_output.to_csv('stockmarket_data.csv')
-    stocks_output.to_csv('stocks_data.csv')
+    wsb_output.to_csv('storage/wsb_data.csv')
+    stockmarket_output.to_csv('storage/stockmarket_data.csv')
+    stocks_output.to_csv('storage/stocks_data.csv')
     return
 
 
