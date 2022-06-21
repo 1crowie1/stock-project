@@ -67,6 +67,7 @@ instance/
 
 # Scrapy stuff:
 .scrapy
+stock-scraper/reddit_credentials.csv
 
 # Sphinx documentation
 docs/_build/
@@ -127,3 +128,9 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Large file formats
+.csv
+.csv/
+/.csv
+storage/
