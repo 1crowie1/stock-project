@@ -67,6 +67,7 @@ instance/
 
 # Scrapy stuff:
 .scrapy
+stock-scraper/reddit_credentials.csv
 
 # Sphinx documentation
 docs/_build/
@@ -131,3 +132,9 @@ dmypy.json
 # Mac Stuff
 *.DS_Store
 *.code-workspace
+
+# Large file formats
+.csv
+.csv/
+/.csv
+storage/

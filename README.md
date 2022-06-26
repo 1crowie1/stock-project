@@ -1,4 +1,4 @@
-#Stock Analysis Project
+# Stock Analysis Project
 
 Description:
 - Stock Analysis Project Consisting of Multiple Components
