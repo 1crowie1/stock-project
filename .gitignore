@@ -129,6 +129,10 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
+# Mac Stuff
+*.DS_Store
+*.code-workspace
+
 # Large file formats
 .csv
 .csv/
