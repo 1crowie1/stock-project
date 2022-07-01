@@ -19,10 +19,9 @@ def check_connection() -> bool:
     """
     Check connection to Azure Database
     """
-
     try:
         d = Database()
-        query = "SELECT * FROM dbo.Stock"
+        query = "SELECT @@Version"
         results = d.post_authenticated_azure_client(query)
         print(results)
         return True
