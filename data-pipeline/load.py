@@ -67,8 +67,32 @@ def load_twiter_data(data: pd.DataFrame) -> None:
     """
     try:
         d = Database()
-        query = "INSERT INTO dbo.twitter_data (tweet_id, tweet_user, tweet_text, tweet_time) VALUES (?, ?, ?, ?)"
+        query = "INSERT INTO dbo.twitter_data (tweet_date, tweet_user, tweet_text, stock_id) VALUES (?, ?, ?, ?, ?)"
         data.apply(lambda x: d.post_azure_query(query, x), axis=1)
         log("Twitter data loaded successfully.", log_style.GREEN)
+    except Exception as e:
+        log(e, log_style.RED)
+
+def update_reddit_data(data: pd.DataFrame) -> None:
+    """
+    Updates sentiment and stock reddit post data in Azure Database
+    """
+    try:
+        d = Database()
+        query = "UPDATE dbo.reddit_data SET stock_id = ?, sentiment = ?, use_tag = ? WHERE post_id = ?"
+        data.apply(lambda x: d.post_azure_query(query, x), axis=1)
+        log("Reddit data updated successfully.", log_style.GREEN)
+    except Exception as e:
+        log(e, log_style.RED)
+
+def update_twitter_data(data: pd.DataFrame) -> None:
+    """
+    Updates sentiment twitter post data in Azure Database
+    """
+    try:
+        d = Database()
+        query = "UPDATE dbo.twitter_data SET sentiment = ?, use_tag = ? WHERE tweet_id = ?"
+        data.apply(lambda x: d.post_azure_query(query, x), axis=1)
+        log("Twitter data updated successfully.", log_style.GREEN)
     except Exception as e:
         log(e, log_style.RED)
