@@ -49,6 +49,26 @@ def check_connection() -> bool:
         log(e, log_style.RED)
         return False
 
+def load_reddit_data(data: pd.DataFrame) -> None:
+    """
+    Loads reddit data into Azure Database
+    """
+    try:
+        d = Database()
+        query = "INSERT INTO dbo.reddit_data (sub_id, post_user, post_title, post_text, post_time) VALUES (?, ?, ?, ?, ?)"
+        data.apply(lambda x: d.post_azure_query(query, x), axis=1)
+        log("Reddit data loaded successfully.", log_style.GREEN)
+    except Exception as e:
+        log(e, log_style.RED)
 
-
-check_connection()
+def load_twiter_data(data: pd.DataFrame) -> None:
+    """
+    Loads twitter data into Azure Database
+    """
+    try:
+        d = Database()
+        query = "INSERT INTO dbo.twitter_data (tweet_id, tweet_user, tweet_text, tweet_time) VALUES (?, ?, ?, ?)"
+        data.apply(lambda x: d.post_azure_query(query, x), axis=1)
+        log("Twitter data loaded successfully.", log_style.GREEN)
+    except Exception as e:
+        log(e, log_style.RED)
