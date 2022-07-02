@@ -1,5 +1,18 @@
 import pyodbc
+import logging
 import pandas as pd
+
+class log_style():
+    BLACK = '\033[30m'
+    RED = '\033[31m'
+    GREEN = '\033[32m'
+    YELLOW = '\033[33m'
+    BLUE = '\033[34m'
+    MAGENTA = '\033[35m'
+    CYAN = '\033[36m'
+    WHITE = '\033[37m'
+    UNDERLINE = '\033[4m'
+    RESET = '\033[0m'
 
 class Database:
     def __init__(self) -> None:
@@ -14,6 +27,13 @@ class Database:
                 results = self.cursor.fetchall()
         return results
 
+def log(message: str, color: str) -> None:
+    level = logging.DEBUG
+    script_name = __file__.split('\\')[-1]
+    fmt = f'[%(levelname)s] {log_style.YELLOW}{script_name}{log_style.RESET} %(asctime)s: {color}%(message)s{log_style.RESET}'
+    logging.basicConfig(level=level, format=fmt)
+    logging.info(message)
+
 
 def check_connection() -> bool:
     """
@@ -23,10 +43,12 @@ def check_connection() -> bool:
         d = Database()
         query = "SELECT @@Version"
         results = d.post_azure_query(query)
-        print(results[0])
+        log(results[0][0], log_style.GREEN)
         return True
     except Exception as e:
-        print(e)
+        log(e, log_style.RED)
         return False
 
-print(check_connection())
+
+
+check_connection()
