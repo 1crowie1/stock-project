@@ -16,6 +16,9 @@ Contributors:
 - Kyle Todd
 - Anesu Chakaingesu
 
+Analytics Site (Currently Demo Version Only):
+- [Stock Gs Analytics Site](https://xd.adobe.com/view/7d2efc1b-9d63-4ced-9b24-4f7dd40d7485-287d/?fullscreen&hints=off)
+
 Installation and Setup:
 - TBA
 
