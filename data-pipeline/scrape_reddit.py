@@ -59,7 +59,6 @@ def scrape_stocks_sub() -> dict:
 def transform_data(sub_data: pd.DataFrame) -> pd.DataFrame:
     return sub_Data
 
-
 def scrape_subreddits() -> None:
     wsb_data = scrape_wsb_sub()
     stockmarket_data = scrape_stockmarket_sub()
@@ -69,15 +68,4 @@ def scrape_subreddits() -> None:
     stockmarket_output = pd.DataFrame.from_dict(stockmarket_data, orient='index')
     stocks_output = pd.DataFrame.from_dict(stocks_data, orient='index')
 
-    transform_data(wsb_output)
-    transform_data(stockmarket_output)
-    transform_data(stocks_output)
-    return
-
-
-def main() -> None:
-    scrape_subreddits()
-    return
-
-if __name__ == '__main__':
-    main()
+    return [wsb_output, stockmarket_output, stocks_output]
