@@ -56,6 +56,9 @@ def scrape_stocks_sub() -> dict:
 
     return stocks_posts
 
+def transform_data(sub_data: pd.DataFrame) -> pd.DataFrame:
+    return sub_Data
+
 def scrape_subreddits() -> None:
     wsb_data = scrape_wsb_sub()
     stockmarket_data = scrape_stockmarket_sub()
@@ -65,15 +68,4 @@ def scrape_subreddits() -> None:
     stockmarket_output = pd.DataFrame.from_dict(stockmarket_data, orient='index')
     stocks_output = pd.DataFrame.from_dict(stocks_data, orient='index')
 
-    wsb_output.to_csv('storage/wsb_data.csv')
-    stockmarket_output.to_csv('storage/stockmarket_data.csv')
-    stocks_output.to_csv('storage/stocks_data.csv')
-    return
-
-
-def main() -> None:
-    scrape_subreddits()
-    return
-
-if __name__ == '__main__':
-    main()
+    return [wsb_output, stockmarket_output, stocks_output]
