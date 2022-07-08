@@ -17,7 +17,6 @@ def scrape_wsb_sub() -> dict:
     wsb_instance = Reddit_Scraper()
     wsb_client = wsb_instance.get_authenticated_reddit_client()
     wsb_sub = wsb_client.subreddit('wallstreetbets')
-    print(f"Subreddit: {wsb_sub.display_name}")
 
     wsb_posts = {'Title': [], 'PostText': []}
 
@@ -55,9 +54,6 @@ def scrape_stocks_sub() -> dict:
         stocks_posts['PostText'].append(post.selftext)
 
     return stocks_posts
-
-def transform_data(sub_data: pd.DataFrame) -> pd.DataFrame:
-    return sub_Data
 
 def scrape_subreddits() -> None:
     wsb_data = scrape_wsb_sub()

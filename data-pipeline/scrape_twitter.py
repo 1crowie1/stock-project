@@ -1,7 +1,7 @@
 # Import unofficial twitter API
 import twint
 
-def config(ticker,store_data):
+def config(ticker: str, store_data: bool) -> twint.Config:
     config = twint.Config()
     config.Search = ticker
     config.Output = ticker + ".csv"
@@ -10,4 +10,5 @@ def config(ticker,store_data):
     return config
 
 #Run scrape
-twint.run.Search(config(input("Ticker:" ),False))
+def scrape_tweets() -> dict:
+    twint.run.Search(config(input("Ticker:" ),False))
