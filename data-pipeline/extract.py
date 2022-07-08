@@ -7,7 +7,7 @@ def main() -> None:
     Extract data from data sources and pass to transform module
     """
     subs_data = scrape_reddit.scrape_subreddits()
-    transform.format_data(subs_data)
+    transform.format_reddit_data(subs_data)
     return
 
 if __name__ == '__main__':
