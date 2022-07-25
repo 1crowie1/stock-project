@@ -7,7 +7,7 @@ class Twitter:
         c.Search= search
         c.Lang="en"
         c.Pandas= True
-        c.Limit= 100
+        c.Limit= 30
         c.Popular_tweets = True
         c.Hide_output = True
         c.Min_likes = 100
@@ -18,6 +18,6 @@ class Twitter:
             return twint.output.panda.Tweets_df[columns]
         
         data= twint_to_pd(["id","created_at","username","tweet","cashtags"])
-        data["tweet"]= data["tweet"].str.replace("[^a-zA-Z0-9]", " ")
+        #data["tweet"]= data["tweet"].str.replace("[^a-zA-Z0-9]", " ")
         
         return(data)
