@@ -5,10 +5,10 @@ import statistics
 
 #Testing variables, remove in production 
 ########################################
-ticker = 'AMZN'
-timespan = 'day'
-date_from = '2022-01-01'
-date_to = '2022-05-20'
+#ticker = 'AMZN'
+#timespan = 'day'
+#date_from = '2022-01-01'
+#date_to = '2022-05-20'
 ########################################
 
 
@@ -63,5 +63,5 @@ class StockAPI:
 
     #Testing statement, remove in production
     ########################################
-    print(getStockAvg(ticker, timespan, date_from, date_to))
+    #print(getStockAvg(ticker, timespan, date_from, date_to))
     ########################################
