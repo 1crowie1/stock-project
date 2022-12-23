@@ -1,7 +1,7 @@
 #Stock API file
 import requests as requests
 import statistics
-
+import pandas as pd
 
 #Testing variables, remove in production 
 ########################################

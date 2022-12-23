@@ -1,0 +1,74 @@
+.test{
+    background-color: red;
+}
+
+.navbar{
+    width: 100%;
+}
+
+.tagline{
+    margin-top: 2em;
+    padding-top: 1em;
+}
+
+.social_row{
+    padding-top: 2em;
+}
+
+.navigation_bar{
+    background-color: black !important;
+}
+
+.chart_key{
+    color: white;
+    padding-bottom: 3em;
+}
+.info_box{
+    background-color: black;
+    width: 100%;
+    /* height: auto; */
+    border-radius: 10px;
+    box-shadow: 10px 10px #606161, 12px 12px 0px 0.2px black;
+    margin-bottom: 1em;
+    padding: 1em;
+}
+
+.sentiment_box{
+    margin-top: 2em;
+}
+
+.stock_sentiment_row{
+    margin-top:20px;
+
+}
+
+.myRowH{
+    padding-bottom: 2%;
+}
+
+.myRow{
+    height: auto;
+    padding-top: 3%;
+}
+
+
+.sentiment_box_heading{
+    color: white;
+    padding-top: 0.5em;
+}
+
+/* .sentiment_info{
+    
+} */
+
+.w{
+    color: white;
+}
+
+.g{
+    color: #9ee96e;
+}
+
+.p{
+    color: #a3a7f5;
+}
